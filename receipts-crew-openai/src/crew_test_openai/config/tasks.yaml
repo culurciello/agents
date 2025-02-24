@@ -1,0 +1,16 @@
+research_task:
+  description: >
+    Extract the following information from all receipt images from {receipts_path}: 
+    date, total amount, vendor name, and items purchased. 
+    Format as JSON. Only provide the JSON as response, nothing else.
+  expected_output: >
+    Data to extract: date, total amount, vendor name, and items purchased. All in JSON format.
+  agent: researcher
+
+reporting_task:
+  description: >
+    Review all the receipts info and make sure all data is included in a JSON format.
+    Make sure all receipts data are read, all relevant information retrieved.
+  expected_output: >
+    Save to a CSV file with all receipts and all data for each receipt.
+  agent: reporting_analyst

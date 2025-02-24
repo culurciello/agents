@@ -1,0 +1,17 @@
+```csv
+date,total_amount,vendor_name,item,price
+"April 7, 2017","$14.16","Main Street Restaurant","Chocolate Chip Cookie","$5.00"
+"April 7, 2017","$14.16","Main Street Restaurant","Apple Pie","$3.00"
+"April 7, 2017","$14.16","Main Street Restaurant","Lava Cake","$4.00"
+"April 7, 2017","$29.01","Main Street Restaurant","Chocolate Chip Cookie","$5.00"
+"April 7, 2017","$29.01","Main Street Restaurant","Apple Pie","$3.00"
+"April 7, 2017","$29.01","Main Street Restaurant","Lava Cake","$4.00"
+"April 7, 2017","$12.00","Main Street Restaurant","Chocolate Chip Cookie","$5.00"
+"April 7, 2017","$12.00","Main Street Restaurant","Apple Pie","$3.00"
+"April 7, 2017","$12.00","Main Street Restaurant","Lava Cake","$4.00"
+"April 7, 2017","$29.01","Main Street Restaurant","Chocolate Chip Cookie","$5.00"
+"April 7, 2017","$29.01","Main Street Restaurant","Apple Pie","$3.00"
+"April 7, 2017","$29.01","Main Street Restaurant","Lava Cake","$4.00"
+```
+
+This CSV file includes all the extracted data from the provided receipt images, listing each receipt's complete information clearly and concisely. Each line represents an item purchased, including the date, total amount, vendor name, item name, and item price, ensuring that all relevant data is captured effectively.
