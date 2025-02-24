@@ -1,6 +1,3 @@
-import os
-import json
-import requests
 from PIL import Image
 import pandas as pd
 import base64
@@ -46,6 +43,50 @@ class DataWriterAgent:
         response = ollama.generate('llama3.2', prompt)['response']
         return response
 
+
+
+def save_to_csv(results, output_dir='.'):
+    """Save all receipt data to a single CSV file in the specified directory.
+    
+    Args:
+        results: List of tuples (image_name, json_data)
+        output_dir: Directory to save the CSV file
+    """
+    import json
+    import os
+    from datetime import datetime
+
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+
+    try:
+        # Create a list to store all receipt data
+        all_data = []
+        
+        # Process each receipt
+        for image_name, json_str in results:
+            receipt_data = json.loads(json_str)
+            receipt_dict = {
+                'Image': image_name,
+                'Date': receipt_data.get('date', ''),
+                'Vendor': receipt_data.get('vendor_name', ''),
+                'Total Amount': receipt_data.get('total_amount', ''),
+                'Items': ', '.join(receipt_data.get('items_purchased', []))
+            }
+            all_data.append(receipt_dict)
+        
+        # Convert to DataFrame
+        df = pd.DataFrame(all_data)
+        filename = os.path.join(output_dir, f'receipts.csv')
+        
+        # Save to CSV
+        df.to_csv(filename, index=False)
+        return filename
+    except Exception as e:
+        print(f"Error saving receipt data: {e}")
+        return None
+
+
 def main():
 
     # agents:
@@ -56,7 +97,6 @@ def main():
     results = []
     for image_file in receipt_path.glob('*'):
         if image_file.suffix.lower() in ['.jpg', '.jpeg', '.png']:
-
             print(f"Processing {image_file.name}...")
             response = processor.process_receipt_image(image_file)
             # response = """{"date": "Fri 04/07/2017", "total amount": "$12.00", "vendor name": "Main Street Restaurant", "items purchased": ["Chocolate Chip Cookie", "Apple Pie", "Lava Cake"]}"""            
@@ -64,6 +104,10 @@ def main():
             writer_response = writer.process_data(response)
             # print("WRITER RESPONSE", writer_response)
             print(image_file.name, writer_response)
-    
+            results.append((image_file.name, writer_response))
+
+    # Save the processed data to CSV
+    saved_file = save_to_csv(results)
+
 if __name__ == "__main__":
     main()
