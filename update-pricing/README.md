@@ -14,7 +14,7 @@ python compare_llm_prices.py
 ## OpenAI:
 works:
 
-
+```
 euge@Pora-2:~/Desktop/update-pricing $ python compare_llm_prices.py 
 Main sheet header: [Product	UOM	vendor price	margin %	sale price]
 New sheet header: [Product	UOM	vendor price	notes]
@@ -29,12 +29,12 @@ New sheet:
 --------------------------------------------------
 
 Updated Main Row:
- ```json
+json
 {
     "changed": "true",
     "updated_main_sheet_row": ["vehicular gas 11", "gallon", "45", "15", "51.75"]
 }
-```
+
 --------------------------------------------------
 
 Processing Matching lines:
@@ -47,12 +47,12 @@ New sheet:
 --------------------------------------------------
 
 Updated Main Row:
- ```json
+json
 {
     "changed": "false",
     "updated_main_sheet_row": ["oil motor 33", "gallon", 33, 15, 37.95]
 }
-```
+
 --------------------------------------------------
 
 Processing Matching lines:
@@ -65,13 +65,12 @@ New sheet:
 --------------------------------------------------
 
 Updated Main Row:
- ```json
+json
 {
     "changed": "false",
     "updated_main_sheet_row": ["transmittion fluid 45", "gallon", "22", "15", "25.3"]
 }
 ```
-
 
 
 
